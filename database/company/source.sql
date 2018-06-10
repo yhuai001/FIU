@@ -1,0 +1,12 @@
+source C:\Users\HYZH\Desktop\company\department.sql
+source C:\Users\HYZH\Desktop\company\employee.sql
+source C:\Users\HYZH\Desktop\company\project.sql
+source C:\Users\HYZH\Desktop\company\dept_locations.sql
+source C:\Users\HYZH\Desktop\company\dependent.sql
+source C:\Users\HYZH\Desktop\company\worksOn.sql
+source C:\Users\HYZH\Desktop\company\load-department.sql
+source C:\Users\HYZH\Desktop\company\load-employee.sql
+source C:\Users\HYZH\Desktop\company\load-project.sql
+source C:\Users\HYZH\Desktop\company\load-dloc.sql
+source C:\Users\HYZH\Desktop\company\load-dependent.sql
+source C:\Users\HYZH\Desktop\company\load-worksOn.sql
