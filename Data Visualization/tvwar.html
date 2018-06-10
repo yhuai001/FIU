@@ -1,0 +1,176 @@
+<!-- FIU   CAP 5738:Data Visualization   Assignment 1
+by Yezehao Huai and Li Li-->
+<html>
+<style>
+  body{
+    text-align: center;
+  }
+
+  div{
+    margin:0 auto;
+  }
+  
+  h1.bartitle{
+    position:relative;
+    top:2em;
+  }
+
+  h1.pietitle{
+    position:relative;
+    top:2em;
+  }
+
+  .xbar{
+    font-size:14px;
+    fill:black;
+  }
+
+  .ybar{
+    font-size:12px;
+    fill:black;
+  }
+
+  #Bar{
+    position:relative;
+  }
+
+  #Pie{
+    position:relative;
+    top:-35em;
+  }
+
+  #legend{
+    position: relative;
+    top: 6em;
+    margin-left: 20%;
+  }
+
+  ul{
+    text-align: center;
+    list-style-type:none;
+	position:relative;
+	left:5em;
+    }
+
+  ul li{
+    text-align: center;
+    font-size: 16px;
+    height:10px;
+    float:left;
+    list-style-type: square;
+    list-style-position: inside;
+    }
+
+  li.no{
+    color: red;
+    width: 130px;
+  }
+  li.bb{
+    color: green;
+    width: 180px;
+  }
+  li.got{
+    color: orange;
+    width: 200px;
+  }
+  li.both{
+    color: steelblue;
+    width: 130px;
+  }
+  li.others{
+    color: brown;
+    width: 130px;
+  }
+
+  svg.piechart{
+    text-align: center;
+	position:relative;
+	left:-4em;
+  }
+
+  circle{
+    stroke:white;
+    stroke-width:1px;
+    fill:white;
+  }
+
+  .data {
+    fill: #FFFFFF;
+    font-family="Helvetica, Arial, sans-serif"; 
+  }
+
+</style>
+
+<body>
+  <div id="Bar">
+    <h1 class="bartitle">TV War Bar Chart</h1>
+      <svg id="barchart" width="1000" height="1000">
+
+        <!-- X axis -->
+        <line stroke="gray" x1="110" y1="400" x2="850" y2="400"/>
+        <line stroke="gray" x1="110" y1="350" x2="850" y2="350"/>
+        <line stroke="gray" x1="110" y1="300" x2="850" y2="300"/>
+        <line stroke="gray" x1="110" y1="250" x2="850" y2="250"/>
+        <line stroke="gray" x1="110" y1="200" x2="850" y2="200"/>
+        <line stroke="gray" x1="110" y1="150" x2="850" y2="150"/>
+        <line stroke="gray" x1="110" y1="100" x2="850" y2="100"/>
+
+        <!-- X labels -->
+        <text x="150" y="420" class="xbar" text-anchor="middle">No TV</text>
+        <text x="300" y="420" class="xbar" text-anchor="middle">Breaking Bad</text>
+        <text x="450" y="420" class="xbar" text-anchor="middle">Game of Thrones</text>
+        <text x="600" y="420" class="xbar" text-anchor="middle">Both</text>
+        <text x="750" y="420" class="xbar" text-anchor="middle">Others</text>
+
+        <!-- Y labels -->
+        <text x="100" y="400"  class="ybar" text-anchor="end">0</text>
+        <text x="100" y="350"  class="ybar" text-anchor="end">2</text>
+        <text x="100" y="300"  class="ybar" text-anchor="end">4</text>
+        <text x="100" y="250"  class="ybar" text-anchor="end">6</text>
+        <text x="100" y="200"  class="ybar" text-anchor="end">8</text>
+        <text x="100" y="150"  class="ybar" text-anchor="end">10</text>
+        <text x="100" y="100"  class="ybar" text-anchor="end">12</text>
+
+          <!--Count -->
+        <rect id="A" x="125" y="250" fill="red" width="50" height="150"/>
+        <rect id="B" x="275" y="275" fill="green" width="50" height="125"/>
+        <rect id="C" x="425" y="150" fill="orange" width="50" height="250"/>
+        <rect id="D" x="575" y="225" fill="steelblue" width="50" height="175"/>
+        <rect id="E" x="725" y="225" fill="brown" width="50" height="175"/>
+      </svg>
+    </div>
+
+    <div id="Pie">
+		
+        <h1 class="pietitle">TV War Pie Chart</h1>
+        <!--legend-->
+        <div id="legend">
+          <ul>
+            <li class="no">No TV</li>
+            <li class="bb">Breaking Bad</li>
+            <li class="got">Game of Thrones</li>
+            <li class="both">Both</li>
+            <li class="others">Others</li>
+          </ul>
+        </div>
+      <!--piechar-->
+      <svg class="piechart" width="800" height="800">
+        <circle cx="450" cy="350" r="180"/>
+        <text x="450" y="350" font-size="25" fill="black"> 21% </text>
+
+        <path d="M450 350,L450 170,A180 180 0 0 0 275.65503099685 305.23582031033,Z" fill="brown"/>
+        <path d="M450 350,L275.65503099685 305.23582031033,A180 180 0 0 0 363.28433866169 507.7352024079,Z" fill="steelblue"/>
+        <path d="M450 350,L363.28433866169 507.7352024079,A180 180 0 0 0 628.58064623661 372.55998204157,Z" fill="orange"/>
+        <path d="M450 350,L628.58064623661 372.55998204157,A180 180 0 0 0 612.86886944388 273.35972751829,Z" fill="green"/>
+        <path d="M450 350,L612.86886944388 273.35972751829,A180 180 0 0 0 450 170,Z" fill="red"/>
+
+        <text class="data" y="30%" x="45%">21%</text>
+        <text class="data" y="30%" x="65%">18%</text>
+        <text class="data" y="42%" x="73%">9%</text>
+        <text class="data" y="62%" x="62%">31%</text>
+        <text class="data" y="52%" x="38%">21%</text>
+      </svg>
+    </div>
+
+</body>
+</html>

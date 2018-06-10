@@ -1,0 +1,100 @@
+<!-- FIU   CAP 5738:Data Visualization   Assignment 2
+by Yezehao Huai (PID:5965823) and Li Li(PID:6052180)-->
+
+<html>
+	<head>
+		<title>City Info</title>
+		<script src="https://d3js.org/d3.v5.js"></script>
+		<style>
+			table{
+				
+				border-collapse: collapse;
+			}
+			thead{
+				font-weight: bold;
+			}
+			td{
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<h1> City Info</h1>
+		<table>
+			<thead>
+				<td>City</td>
+				<td>State</td>
+				<td>Population</td>
+			</thead>
+			<tbody>
+
+			</tbody>
+		</table>
+		<script>
+
+		d3.text('miles.dat').then(function(textData) {
+			// parse data
+			var dsv = d3.dsvFormat(",", "text/plain");
+			var data = dsv.parseRows(textData, function(d){
+
+			    t = d[0].substring(0, 1);
+			    if (t == "*" || (t >= 0 && t <=9 )) {
+					return;
+				}
+
+			    s = "";
+			    if (d[1] != undefined) {
+			        s = d[1].split("[")[0];
+				}
+				p = "";
+                if (d[2] != undefined) {
+                    p = d[2].split("]")[1];
+                }
+
+				return {
+					City: d[0],
+					State: s,
+					Population: p
+
+				};
+			});
+			console.log(data);
+
+			// sort data by State, makes it more friendly to read
+            data.sort(function(x, y){
+                return d3.ascending(x.State, y.State);
+            })
+
+			// populate table with d3 selection and data enter
+            function populate_table(data, columns) {
+
+                var	tbody = d3.select('tbody');
+
+                // create a row for each object in the data
+                var rows = tbody.selectAll('tr')
+                    .data(data)
+                    .enter()
+                    .append('tr');
+
+                // create a cell in each row for each column
+                var cells = rows.selectAll('td')
+                    .data(function (row) {
+                        return columns.map(function (column) {
+                            return {column: column, value: row[column]};
+                        });
+                    })
+                    .enter()
+                    .append('td')
+                    .text(function (d) { return d.value; });
+
+                return table;
+            }
+
+            // render the table
+            populate_table(data, ['City', 'State', 'Population']);
+
+		});
+
+		</script>
+	</body>
+</html>
